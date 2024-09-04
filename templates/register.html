@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Data Diri</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="date"], textarea, input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-back {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+
+        .show-password {
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 14px;
+            cursor: pointer;
+            color: #007bff;
+        }
+
+        .show-password:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pendaftaran Data Diri</h1>
+    <form action="/register" method="POST">
+        <label for="nik">NIK:</label><br>
+        <input type="text" id="nik" name="nik" required><br>
+
+        <label for="name">Nama:</label><br>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="dob">Tanggal Lahir:</label><br>
+        <input type="date" id="dob" name="dob" required><br>
+
+        <label for="address">Alamat:</label><br>
+        <textarea id="address" name="address" rows="4" required></textarea><br>
+
+        <label for="auth_code">Kode Otorisasi:</label><br>
+        <input type="password" id="auth_code" name="auth_code" required><br>
+
+        <span class="show-password" onclick="togglePassword()">Show PIN Code</span>
+
+        <input type="submit" value="Daftar">
+    </form>
+
+    <a href="{{ url_for('home') }}" class="btn-back">Kembali ke Home</a>
+
+    <script>
+        function togglePassword() {
+            var authCodeInput = document.getElementById("auth_code");
+            var showPasswordText = document.querySelector(".show-password");
+            if (authCodeInput.type === "password") {
+                authCodeInput.type = "text";
+                showPasswordText.textContent = "Hide PIN Code";
+            } else {
+                authCodeInput.type = "password";
+                showPasswordText.textContent = "Show PIN Code";
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
